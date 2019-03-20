@@ -15,13 +15,13 @@ ruleset wovyn_base {
     pre {
     violation = event:attr("temperature") > temperature_threshold;
     }
-    send_directive("violation", violation)
+    send_directive("violation", {"vio": violation})
     fired {
         raise wovyn event "threshold_violation" attributes event:attrs if violation;
     }
   }
  rule threshold_notification {
     select when wovyn threshold_violation
-    send_directive("yep", "WE REACHED THIS")
+    send_directive("YEP", {"YES" : "WE REACHED THIS"})
  } 
 }
