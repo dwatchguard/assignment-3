@@ -8,7 +8,7 @@ ruleset wovyn_base {
 
  rule process_heartbeat {
     select when wovyn heartbeat
-    send_directive("wovyn", "Heartbeat Received");
+    send_directive("wovyn", {"body" : "Heartbeat Received"});
   }
  rule find_high_temps {
     select when wovyn new_temperature_reading
