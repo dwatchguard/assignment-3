@@ -3,7 +3,7 @@ ruleset wovyn_base {
     shares __testing
   }
   global {
-    temperature_threshold = 77;
+    temperature_threshold = 20;
   }
 
  rule process_heartbeat {
