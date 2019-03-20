@@ -9,9 +9,6 @@ ruleset wovyn_base {
  rule process_heartbeat {
     select when wovyn heartbeat
     send_directive("wovyn", "Heartbeat Received");
-    fired {
-        raise wovyn event "new_temperature_reading" attributes { "temperature": event:attr("genericThing").get("data", "temperature", "temperatureF"), "timestamp": time:now()};
-    }
   }
  rule find_high_temps {
     select when wovyn new_temperature_reading
