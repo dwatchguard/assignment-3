@@ -1,6 +1,9 @@
 ruleset wovyn_base {
   meta {
-    shares __testing
+        use module lesson_keys
+        use module twilio alias twilio
+        with account_sid = keys:twilio{"account_sid"}
+        auth_token =  keys:twilio{"auth_token"}
   }
   global {
     temperature_threshold = 20;
@@ -27,6 +30,6 @@ ruleset wovyn_base {
   }
  rule threshold_notification {
     select when wovyn threshold_violation
-    send_directive("YEP", {"YES" : "WE REACHED THIS"});
+    twilio:send_sms("14433709548", "16677712304", "There was a violation");
  } 
 }
